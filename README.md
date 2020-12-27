@@ -1,29 +1,35 @@
 # PitonCMS CKEditor5 Custom Build
 
-Forked ckeditor/ckeditor5 to PitonCMS/ckeditor5 on GitHub
+Custom build of CKEditor5 for PitonCMS, based on the Classic build. Includes custom media image management to select saved media files in PitonCMS to insert into the document editor.
 
-Cloned fork to local
-    git clone -b stable git@github.com:PitonCMS/ckeditor5.git
+This bundle started with a copy of the classic build packge from https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-build-classic.
 
-Added original ckeditor as upstream remote to get future updates
-    cd ckeditor5
-    git remote add cke-upstream https://github.com/ckeditor/ckeditor5.git
+## Installing and Modifying
+Clone this repo to your local development environment and navigate into the new project.
+```
+git clone git@github.com:PitonCMS/PitonCKEditor.git
+cd PitonCKEditor
+```
 
-Using the classic build as a start, copied ckeditor5-build-classic to piton-build using Finder
+Initialize NPM so that `package.json` is updated automatically when adding package dependencies, just accept default prompts.
+```
+npm init
+```
 
-Navigate into Piton Build of CKEditor
-    cd packages/piton-build/
+Install node dependencies, this may take a while...
+```
+npm install
+```
 
-Initialize NPM so that package.json is updated automatically when adding package dependencies, just accept prompts
-    npm init
 
-Install node dependencies
-    npm install
+To add a new CKEditor plugin, request it within the project.
+```
+npm install --save <package-name>
+```
 
-To add a CKEditor plugin, request it within piton-build with
-    npm install --save <package-name>
+When finished, _build_ a new version of Piton CKEditor to compile the source into a single ckeditor.js file with translations.
+```
+npm run build
+```
 
-To build a new version of Piton CKEditor, from the piton-build directory run
-    npm run build
-
-Then copy the `build` directory (compiled JS source) into PitonCMS/Engine/assets/ckeditor5/ and commit.
+Then copy the finished `build` directory into PitonCMS/Engine/assets/ckeditor5/ and commit to `PitonCMS/Engine`.
